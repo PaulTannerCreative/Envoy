@@ -1,0 +1,64 @@
+// ----- Animations ----- //
+
+// Keyframes
+@mixin keyframes($name) {
+	@-webkit-keyframes #{$name} {
+		@content;
+	}
+
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+
+	@keyframes #{$name} {
+		@content;
+	}
+}
+
+// Animate
+// Usage EG: @include animate($name: fade-in, $duration: 1s, $count: 1, $timing: ease-in-out);
+@mixin animate($name, $duration: null, $count: null, $timing: null, $direction: null, $delay: null) {
+	animation-name: #{$name};
+
+	@if $delay != null {
+		animation-delay: #{$delay};
+	}
+
+	@if $direction != null {
+		animation-direction: #{$direction};
+	}
+
+	@if $duration != null {
+		animation-duration: #{$duration};
+	}
+
+	@if $count != null {
+		animation-iteration-count: #{$count};
+	}
+
+	@if $timing != null {
+		animation-timing-function: #{$timing};
+	}
+}
+
+// Move Left
+@include keyframes($name: 'move-left') {
+	from {
+		transform: translateX(20px);
+	}
+
+	to {
+		transform: translateX(0);
+	}
+}
+
+// Move Right
+@include keyframes($name: 'move-right') {
+	from {
+		transform: translateX(-20px);
+	}
+
+	to {
+		transform: translateX(0);
+	}
+}

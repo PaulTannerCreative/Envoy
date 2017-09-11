@@ -1,0 +1,22 @@
+{
+  "name": "Envoy",
+  "version": "1.0.0",
+  "description": "Envoy code test",
+  "private": true,
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paul Tanner",
+  "license": "ISC",
+  "devDependencies": {
+    "bourbon": "^4.3.4",
+    "bourbon-neat": "^1.9.0",
+    "breakpoint-sass": "^2.7.1",
+    "browser-sync": "^2.17.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-sass": "^2.3.2",
+    "node-neat": "^1.7.2"
+  }
+}

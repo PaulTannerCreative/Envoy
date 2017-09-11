@@ -1,0 +1,190 @@
+// ----- Slider ----- //
+
+.slider__image {
+	height: 230px;
+	@extend %image-cover;
+
+	@include breakpoint(546px, $no-query) {
+		height: 323px;
+	}
+
+	@include breakpoint($bp-tablet) {
+		height: 425px;
+	}
+
+	@include breakpoint($bp-tablet-landscape) {
+		height: 550px;
+	}
+
+	@include breakpoint($bp-desktop) {
+		height: 674px;
+	}
+}
+
+.slider__label {
+	font-size: 12px;
+
+	@include breakpoint($bp-tablet) {
+		font-size: inherit;
+	}
+}
+
+.slider__label--blue {
+	color: $blue-dark
+}
+
+.slider__label--red {
+	color: $red;
+}
+
+.slider__label--orange {
+	color: $orange;
+}
+
+.slider__link {
+	display: block;
+
+	@include hover() {
+		color: $white;
+	}
+}
+
+.slider__list {
+	position: relative;
+}
+
+.slider__paragraph {
+	color: $gray;
+	font-size: 12px;
+	line-height: 1.3;
+
+	@include breakpoint($bp-phone) {
+		max-width: 90%;
+	}
+
+	@include breakpoint($bp-tablet) {
+		max-width: none;
+	}
+
+	@include breakpoint($bp-tablet-landscape) {
+		font-size: 14px;
+	}
+}
+
+.slider__paragraph--white {
+	color: $white;
+}
+
+.slider__title {
+	font-family: $font-secondary;
+	font-size: 15px;
+	line-height: 1.1;
+	margin-bottom: 2px;
+	text-transform: uppercase;
+
+	@include breakpoint($bp-phone) {
+		font-size: 21px;
+	}
+
+	@include breakpoint($bp-tablet) {
+		font-size: 35px;
+		letter-spacing: -0.05rem;
+		line-height: 0.95;
+		margin-bottom: 7px;
+	}
+
+	@include breakpoint($bp-tablet-landscape) {
+		font-size: 44px;
+	}
+
+	@include breakpoint($bp-desktop) {
+		font-size: 47px;
+	}
+}
+
+.slider__title--blue {
+	color: $blue-dark
+}
+
+.slider__title--red {
+	color: $red;
+}
+
+.slider__title--orange {
+	color: $orange;
+}
+
+.slider-container {
+	@include breakpoint($bp-tablet) {
+		@include position(absolute, 0 0 0 0);
+	}
+}
+
+.slider-info {
+	opacity: 0;
+	padding: 20px 0 40px;
+	text-align: left;
+
+	.flex-active-slide & {
+		backface-visibility: hidden;
+		@include animate($name: 'move-left', $duration: '1s');
+		isolation: isolate;
+		opacity: 1;
+	}
+
+	@include breakpoint($bp-phone) {
+		padding-top: 30px;
+	}
+
+	@include breakpoint($bp-tablet) {
+		padding: 95px 0 0 0;
+		width: 42%;
+	}
+
+	@include breakpoint($bp-tablet-landscape) {
+		padding-top: 130px;
+		width: 38%;
+	}
+
+	@include breakpoint($bp-desktop) {
+		padding-top: 175px;
+	}
+}
+
+.slider-info--top {
+	@include breakpoint($bp-tablet) {
+		padding-top: 130px;
+		width: 38%;
+	}
+
+	@include breakpoint($bp-tablet-landscape) {
+		padding-top: 170px;
+		width: 36%;
+	}
+
+	@include breakpoint($bp-desktop) {
+		padding-top: 205px;
+	}
+}
+
+.slider-info--right {
+	@include breakpoint($bp-tablet) {
+		float: right;
+		margin-right: 5%;
+		width: 43%;
+	}
+
+	@include breakpoint($bp-tablet-landscape) {
+		margin-right: 10%;
+		width: 38%;
+	}
+
+	@include breakpoint($bp-desktop) {
+		margin-right: 7.5%;
+		width: 40%;
+	}
+}
+
+.wrap--slider {
+	position: relative;
+}

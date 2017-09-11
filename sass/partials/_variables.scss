@@ -1,0 +1,61 @@
+// ----- Variables ----- //
+
+// Colors
+$black: #1d1d1d;
+$blue: #67d9da;
+$blue-dark: #2162bc;
+$gray: #9f9f9f;
+$gray-dark: #464646;
+$gray-light: #e4e4e4;
+$orange: #f68f1e;
+$red: #d90e0a;
+$red-dark: #941b1e;
+$red-light: #e34e33;
+$white: #ffffff;
+
+// defaults
+$bg: $black;
+$body-copy: $gray;
+
+$link-primary: $red-light;
+$link-secondary: $white;
+
+$border-color: #282828;
+$border: 1px solid $border-color;
+
+// Icons
+$icon-close: "\e907";
+$icon-chevron-down: "\e906";
+$icon-chevron-left: "\e903";
+$icon-chevron-right: "\e904";
+$icon-chevron-up: "\e905";
+$icon-menu: "\e902";
+$icon-minus: "\e901";
+$icon-plus: "\e900";
+$icon-twitter: "\e603";
+
+// Images
+$image-dir: "../images/";
+
+// Media queries
+$iphone6: 375px;
+$iphone6-plus: 414px;
+$phone-landscape: 480px;
+$iphone6-landscape: 667px;
+$iphone6-plus-landscape: 736px;
+$tablet: 768px;
+$tablet-landscape: 1024px;
+$not-tablet: $tablet-landscape + 1;
+$desktop: 1200px;
+
+// Shorthand breakpoints that will print media query styles to IE without any duplicate styles
+$no-query: 'no-query' true;
+$bp-iphone6: $iphone6, $no-query;
+$bp-iphone6-plus: $iphone6-plus, $no-query;
+$bp-phone: $phone-landscape, $no-query;
+$bp-iphone6-landscape: $iphone6-landscape, $no-query;
+$bp-iphone6-plus-landscape: $iphone6-plus-landscape, $no-query;
+$bp-tablet: $tablet, $no-query;
+$bp-tablet-landscape: $tablet-landscape, $no-query;
+$bp-not-tablet: $not-tablet, $no-query;
+$bp-desktop: $desktop, $no-query;

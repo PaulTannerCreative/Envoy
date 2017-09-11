@@ -1,0 +1,188 @@
+// ----- Mixins ----- //
+
+// Icons font
+@mixin font-icon {
+	font-family: $font-icon;
+	-webkit-font-smoothing: antialiased; // Better Font Rendering
+	-moz-osx-font-smoothing: grayscale; // Better Font Rendering
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	speak: none;
+	text-transform: none;
+}
+
+// Icons
+@mixin icon($icon-code: '', $pseudo: after) {
+	position: relative;
+	@include hide-text;
+
+	&:#{$pseudo} {
+		content: $icon-code;
+		@include font-icon;
+		left: 0;
+		position: absolute;
+		text-indent: 0;
+		top: 0;
+	}
+}
+
+// Image background cover
+@mixin image-cover {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+%image-cover {
+	@include image-cover;
+}
+
+// Image background contain
+@mixin image-contain {
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+%image-contain {
+	@include image-contain;
+}
+
+// Loading gif
+@mixin loading-gif($pseudo: before, $position: absolute, $z-index: false) {
+	$size: 25px;
+	&:#{$pseudo} {
+		background: url(#{$image-dir}loading.gif) no-repeat center;
+		background-size: $size;
+		content: "";
+		height: $size;
+		left: 50%;
+		margin-top: -$size/2;
+		margin-left: -$size/2;
+		position: #{$position};
+		top: 50%;
+		width: $size;
+		@if $z-index != false {
+			z-index: #{$z-index};
+		}
+	}
+}
+
+%loading-gif {
+	@include loading-gif;
+}
+
+// Loading background gif
+@mixin loading-gif-bg {
+	background: url(#{$image-dir}loading.gif) no-repeat center;
+	background-size: 25px;
+}
+
+%loading-gif-bg {
+	@include loading-gif-bg;
+}
+
+// Hover
+@mixin hover($color: inherit) {
+	&:active, &:focus, &:visited {
+		color: $color;
+	}
+
+	&:hover {
+		@content;
+	}
+}
+
+// Old IE
+@mixin old-ie {
+	@if $old-ie {
+		@content;
+	}
+}
+
+// Responsive image
+@mixin responsive-image {
+	height: auto;
+	max-width: 100%;
+	width: 100%;
+}
+
+%responsive-image {
+	@include responsive-image;
+}
+
+// Webkit scrollbars
+@mixin scrollbars {
+	&::-webkit-scrollbar {
+		-webkit-appearance: none;
+		background: #d3442f;
+		background: rgba(148,27,30,0.2);
+		width: 10px;
+		border-radius: 5px;
+	}
+
+	&::-webkit-scrollbar-track-piece  {
+		background: #d3442f;
+		background: rgba(148,27,30,0.2);
+		border-radius: 5px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: $red-dark;
+		border-radius: 5px;
+		-webkit-box-shadow: 0 0 1px rgba(255,255,255, 0.5);
+	}
+}
+
+%scrollbars {
+	@include scrollbars;
+}
+
+// SVG background-images with fallback - defaults to png
+@mixin svg-image($image, $width, $height, $image-type: 'png', $position: 'center center', $repeat: 'no-repeat') {
+	background-color: transparent;
+	background-image: url(#{$image-dir}#{$image}.#{$image-type}); // Fallback png or jpg image
+	background-image: -webkit-linear-gradient(transparent, transparent), url(#{$image-dir}#{$image}.svg);
+	background-image: linear-gradient(transparent, transparent), url(#{$image-dir}#{$image}.svg);
+	background-position: #{$position};
+	background-repeat: #{$repeat};
+	background-size: $width $height;
+}
+// EG: @include svg-image($image: 'payment/american_express', $width: $card-width, $height: $card-height);
+
+// Vertical Align
+@mixin vertical-align($element: '') {
+	font-size: 0;
+
+	> #{$element} {
+		display: inline-block;
+		max-width: 100%;
+		vertical-align: middle;
+	}
+
+	&:before {
+		content: "";
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+	}
+}
+
+// Wrap
+@mixin wrap {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 960px;
+	padding-left: 20px;
+	padding-right: 20px;
+
+	@include breakpoint($bp-tablet-landscape) {
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+}
+
+%wrap {
+	@include wrap;
+}

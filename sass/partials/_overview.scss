@@ -1,0 +1,47 @@
+// ----- Overview ----- //
+
+.overview {
+	@include clearfix;
+}
+
+.overview__header {
+	border-color: $border-color;
+	border-style: solid;
+	border-width: 5px 0;
+	padding: 40px 0;
+
+	@include breakpoint($bp-tablet) {
+		border-width: 0 0 5px;
+		padding-top: 50px;
+	}
+
+	@include breakpoint($bp-tablet-landscape) {
+		padding-top: 55px;
+	}
+
+	@include breakpoint($bp-desktop) {
+		padding-top: 60px;
+	}
+}
+
+.overview__highligt {
+	color: $red-light;
+}
+
+.overview__title {
+	color: $white;
+	font-size: 18px;
+	font-weight: bold;
+
+	@include breakpoint($bp-tablet) {
+		font-size: 28px;
+	}
+
+	@include breakpoint($bp-tablet-landscape) {
+		font-size: 34px;
+	}
+
+	@include breakpoint($bp-desktop) {
+		font-size: 36px;
+	}
+}

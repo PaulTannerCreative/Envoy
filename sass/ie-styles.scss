@@ -1,0 +1,18 @@
+// IE Styles
+
+// vendor
+@import "../node_modules/bourbon/app/assets/stylesheets/bourbon";
+@import "../node_modules/bourbon-neat/app/assets/stylesheets/neat";
+@import "../node_modules/breakpoint-sass/stylesheets/breakpoint";
+
+// will not print media queries
+@include breakpoint-set('no queries', true)
+
+// will print No Query Fallbacks
+@include breakpoint-set('no query fallbacks', true);
+
+// outputs styles for ie only with @include old-ie {}
+$old-ie: true;
+
+// partials
+@import "import";

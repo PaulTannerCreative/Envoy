@@ -1,0 +1,20 @@
+$prefix-for-webkit: true;
+$prefix-for-mozilla: true;
+$prefix-for-spec: true;
+
+// partials
+@import "partials/variables";
+@import "partials/fonts";
+@import "partials/animations";
+@import "partials/reset";
+@import "partials/mixins";
+@import "partials/general";
+
+// partials (alphabetical order please)
+@import "partials/featured";
+@import "partials/flexslider";
+@import "partials/header";
+@import "partials/mobile-menu";
+@import "partials/overview";
+@import "partials/scrollmagic";
+@import "partials/slider";

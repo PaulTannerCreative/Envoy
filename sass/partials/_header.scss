@@ -1,0 +1,440 @@
+// ----- Main Header ----- //
+
+.header {
+	backface-visibility: hidden;
+	background: $black;
+	@include clearfix;
+	isolation: isolate;
+	position: relative;
+	z-index: 100;
+
+	@include breakpoint($bp-not-tablet) {
+		background: rgba(0,0,0,0.8);
+		@include position(fixed, 0 0 null 0);
+	}
+}
+
+// Header Container
+.header-container {
+	@include clearfix;
+	height: 60px;
+	position: relative;
+}
+
+// Main Navigation
+.header-nav {
+	@include animate($name: 'move-left', $duration: '1s');
+	@include clearfix;
+	display: none;
+
+	@include breakpoint($bp-tablet) {
+		display: inline-block;
+		vertical-align: top;
+	}
+}
+
+.header-nav__list {
+	@include clearfix;
+	font-size: 0;
+	text-align: center;
+}
+
+.header-nav__item {
+	display: inline-block;
+	margin: 29px 0 0 20px;
+	vertical-align: top;
+
+	@include breakpoint($bp-tablet) {
+		margin-top: 35px;
+	}
+}
+
+.header-nav__link {
+	backface-visibility: hidden;
+	color: $white;
+	display: block;
+	font-size: 12px;
+	letter-spacing: 0.025rem;
+	line-height: 1;
+	transition: color 0.3s;
+
+	@include hover($white) {
+		color: $gray;
+	}
+
+	@include breakpoint($bp-tablet-landscape) {
+		font-size: 13px;
+	}
+}
+
+.header-nav__link--active {
+	color: $red-light;
+
+	@include hover($red-light) {
+		color: $red-light;
+	}
+}
+
+// Header Twitter
+.header-twitter {
+	@include animate($name: 'move-right', $duration: '1s');
+	margin-top: -15px;
+	@include position(absolute, 50% 0 null null);
+
+	@include breakpoint($bp-tablet) {
+		bottom: 0;
+		margin-top: 0;
+		top: auto;
+	}
+}
+
+.header-twitter__close {
+	background: $black;
+	color: $white;
+	@include icon($icon-close);
+	font-size: 13px;
+	line-height: 30px;
+	height: 30px;
+	@include position(absolute, 15px 20px null null);
+	transition: background 0.3s;
+	width: 30px;
+
+	&:after {
+		text-align: center;
+		width: 30px;
+	}
+
+	@include hover($white) {
+		background: $red-dark;
+	}
+
+	@include breakpoint($bp-tablet) {
+		display: none;
+	}
+}
+
+.header-twitter__figure {
+	background: $gray-dark;
+	font-size: 0;
+	position: relative;
+
+	@include hover() {
+		.header-twitter-button-holder {
+			width: 163px;
+		}
+	}
+
+	@include breakpoint($bp-tablet-landscape) {
+		@include hover() {
+			.header-twitter-button-holder {
+				width: 230px;
+			}
+		}
+	}
+
+	@include breakpoint($bp-desktop) {
+		@include hover() {
+			.header-twitter-button-holder {
+				width: 270px;
+			}
+		}
+	}
+}
+
+.header-twitter__icon {
+	background: $red-light;
+	color: $white;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 16px;
+	height: 30px;
+	@include icon($icon-twitter);
+	line-height: 30px;
+	transition: background 0.3s;
+	vertical-align: bottom;
+	width: 30px;
+
+	&:after {
+		right: 0;
+		text-align: center;
+	}
+
+	@include hover($white) {
+		background: $red-dark;
+	}
+
+	@include breakpoint($bp-tablet) {
+		font-size: 15px;
+		line-height: 40px;
+		height: 40px;
+		width: 40px;
+
+		&:after {
+			content: $icon-plus;
+		}
+
+		.twitter-active & {
+			background: $red-dark;
+
+			&:after {
+				content: $icon-minus;
+			}
+		}
+	}
+}
+
+.header-twitter__read {
+	color: $red-dark;
+	font-size: 14px;
+	font-weight: bold;
+
+	@include hover($red-dark) {
+		color: $gray-light;
+	}
+
+	@include breakpoint($bp-tablet-landscape) {
+		font-size: 15px;
+	}
+
+	@include breakpoint($bp-desktop) {
+		font-size: 16px;
+	}
+}
+
+.header-twitter__tweet {
+	display: none;
+
+	@include breakpoint($bp-tablet) {
+		color: $blue;
+		display: inline-block;
+		font-size: 12px;
+		font-style: normal;
+		height: 40px;
+		@include icon($icon-twitter);
+		line-height: 40px;
+		padding: 0 25px 0 52px;
+		text-indent: 0;
+		vertical-align: bottom;
+
+		&:after {
+			font-size: 20px;
+			margin-left: 23px;
+		}
+	}
+}
+
+.header-twitter-button-holder {
+	display: none;
+
+	@include breakpoint($bp-tablet) {
+		display: inline-block;
+		height: 40px;
+		overflow: hidden;
+		transition: width 0.3s;
+		vertical-align: bottom;
+		width: 0;
+
+		.twitter-active & {
+			width: 163px;
+		}
+	}
+
+	@include breakpoint($bp-tablet-landscape) {
+		.twitter-active & {
+			width: 230px;
+		}
+	}
+
+	@include breakpoint($bp-desktop) {
+		.twitter-active & {
+			width: 270px;
+		}
+	}
+}
+
+// Twitter Dropdown
+.header-twitter-drop {
+	backface-visibility: hidden;
+	background: $red-light;
+	opacity: 0;
+	padding: 60px 15px 20px 20px;
+	@include position(fixed, 0 0 0 0);
+	transition: opacity 0.3s, visibility 0.3s;
+	visibility: hidden;
+	z-index: 150;
+
+	li {
+		margin-bottom: 20px;
+	}
+
+	.timePosted a {
+		color: $gray-light;
+		display: inline-block;
+		font-size: 14px;
+		font-weight: bold;
+		margin-top: 5px;
+	}
+
+	.tweet {
+		color: $white;
+		font-size: 20px;
+		font-weight: bold;
+
+		a {
+			color: $red-dark;
+			@include word-wrap;
+
+			@include hover($red-dark) {
+				color: $gray-light;
+			}
+		}
+
+		img {
+			display: inline-block;
+			vertical-align: text-top;
+			width: 20px;
+		}
+	}
+
+	.twitter-active & {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	ul {
+		padding-right: 20px;
+	}
+
+	@include breakpoint($bp-tablet) {
+		padding: 25px 15px 25px 25px;
+		@include position(absolute, 100% 0 auto 0);
+
+		ul {
+			padding-right: 25px;
+		}
+	}
+
+	@include breakpoint($bp-tablet-landscape) {
+		.timePosted a {
+			font-size: 15px;
+		}
+
+		.tweet {
+			font-size: 25px;
+
+			img {
+				width: 25px;
+			}
+		}
+	}
+
+	@include breakpoint($bp-desktop) {
+		.timePosted a {
+			font-size: 16px;
+		}
+
+		.tweet {
+			font-size: 30px;
+
+			img {
+				width: 30px;
+			}
+		}
+	}
+}
+
+.header-twitter-drop-inner {
+	height: 100%;
+	overflow: hidden;
+	overflow-y: auto;
+
+	.cssscrollbar.no-hiddenscroll & {
+		@extend %scrollbars;
+	}
+
+	@include breakpoint($bp-tablet) {
+		height: 200px;
+	}
+
+	@include breakpoint($tablet (min-height 300px), $no-query) {
+		height: 200px;
+	}
+
+	@include breakpoint($tablet (min-height 600px), $no-query) {
+		height: 420px;
+	}
+
+	@include breakpoint($tablet (min-height 800px), $no-query) {
+		height: 590px;
+	}
+}
+
+.header-wrap {
+	position: relative;
+}
+
+// Header Logo
+.logo {
+	@include animate($name: 'move-left', $duration: '1s');
+	display: inline-block;
+	font-size: 0;
+	padding: 19px 0 0 40px;
+	position: relative;
+	transition: opacity 0.3s;
+	vertical-align: top;
+
+	@include hover() {
+		opacity: 0.7;
+	}
+
+	@include breakpoint($bp-tablet) {
+		padding: 20px 0 0;
+	}
+}
+
+.logo__link {
+	$height: 21px;
+	$width: 70px;
+	display: block;
+	height: $height;
+	@include hide-text;
+	@include svg-image($image: "logo", $width: $width, $height: $height);
+	width: $width;
+
+	@include breakpoint($bp-tablet) {
+		$height: 26px;
+		$width: 87px;
+		background-size: $width $height;
+		height: $height;
+		width: $width;
+	}
+}
+
+// Menu Button
+.mobile-menu__button-open {
+	color: $gray-dark;
+	display: block;
+	font-size: 35px;
+	height: 35px;
+	line-height: 35px;
+	@include icon($icon-menu);
+	margin: -19px 0 0 -6px;
+	@include position(absolute, 50% null null 0);
+	transition: color 0.3s;
+	width: 35px;
+	z-index: 3;
+
+	@include hover($gray-dark) {
+		color: $red-light;
+	}
+
+	@include breakpoint($bp-tablet) {
+		display: none;
+	}
+}
+
+.twitter-follow-button {
+	display: block;
+	float: right;
+	margin: 10px 25px 0 0;
+}

@@ -1,0 +1,63 @@
+html {
+	background: $bg;
+}
+
+body {
+	background: $bg;
+	color: $body-copy;
+	font-family: $font-primary;
+	font-size: $font-size;
+	margin: 0;
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: relative;
+
+	// !important - pseudo element properties for javascript
+	&:before {
+		content: "0";
+		position: absolute;
+		top: auto;
+		left: auto;
+		width: 0;
+		height: 0;
+		visibility: hidden;
+		z-index: -1;
+
+		// Store the current breakpoint in a body:before pseudo element so we can check it with js
+		// List of breakpoints
+		$breakpoints: $iphone6, $iphone6-plus, $phone-landscape, $iphone6-landscape, $iphone6-plus-landscape, $tablet, $tablet-landscape, $not-tablet, $desktop;
+		@each $bp in $breakpoints {
+			@include breakpoint(#{$bp}) {
+				content: "#{$bp}";
+			}
+		}
+	}
+}
+
+a {
+	color: $link-primary;
+	outline: none;
+	text-decoration: none;
+	transition: color 0.3s;
+
+	@include hover($link-primary) {
+		color: $link-secondary;
+	}
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	text-rendering: auto;
+}
+
+.footer {
+	padding-bottom: 200px;
+}
+
+.hidden-visually {
+	display: none;
+}
+
+.wrap {
+	@extend %wrap;
+}

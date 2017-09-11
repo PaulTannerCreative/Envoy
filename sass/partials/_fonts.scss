@@ -1,0 +1,16 @@
+// ----- Fonts ----- //
+
+$font-dir: "../fonts/";
+$font-icon: "Icons";
+
+// $font-icon
+@include font-face($font-icon, "#{$font-dir}icomoon", normal, $file-formats: eot woff2 woff ttf svg);
+
+// $font-secondary
+@include font-face("Trade-Gothic-Bold", "#{$font-dir}trade-gothic-bold-condensed-20-webfont", normal, $file-formats: eot woff2 woff ttf svg);
+
+// Fonts
+$font-size: 13px;
+$font-fallback: Helvetica, sans-serif;
+$font-primary: Arial, "Arial", $font-fallback;
+$font-secondary: "Trade-Gothic-Bold", MyriadPro-Regular, "Myriad Pro Regular", MyriadPro, "Myriad Pro", $font-fallback;

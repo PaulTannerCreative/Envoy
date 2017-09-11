@@ -1,0 +1,130 @@
+// ----- Mobile Menu ----- //
+
+.mobile-menu {
+	background-color: $bg;
+	height: 100%;
+	@include position(fixed, 0 null null null);
+	transform: translateX(-280px);
+	transition: transform 0.3s ease-in-out;
+	width: 280px;
+	z-index: 510;
+}
+
+.mobile-menu__button-close {
+	background: transparent;
+	color: $white;
+	display: inline-block;
+	font-size: 13px;
+	height: 50px;
+	@include icon($icon-close);
+	outline: none;
+	padding: 0;
+	transition: color 0.3s;
+	width: 100%;
+
+	&:after {
+		left: auto;
+		line-height: 50px;
+		right: 20px;
+		text-align: center;
+	}
+
+	@include hover($white) {
+		color: $red-light;
+	}
+}
+
+// Overlay (closes menu and fades out the page content)
+.mobile-menu__button-overlay {
+	background: rgba($white, 0.5);
+	content: "";
+	@include hide-text;
+	opacity: 0;
+	@include position(fixed, 0 null 0 0);
+	transition: opacity 0.3s ease-in-out, visibility 0s 0.3s ease-in-out; // delay the visibility so it fades out
+	visibility: hidden;
+	width: 100%;
+	z-index: 505;
+
+	.menu-active & {
+		opacity: 1;
+		transition: opacity 0.3s ease-in-out;
+		visibility: visible;
+	}
+}
+
+.mobile-menu__item {
+	border-top: $border;
+
+	&:last-child {
+		border-bottom: $border;
+	}
+}
+
+.mobile-menu__link {
+	color: $white;
+	display: block;
+	@include ellipsis();
+	font-size: 13px;
+	height: 50px;
+	@include icon;
+	letter-spacing: 0.025rem;
+	line-height: 52px;
+	padding: 0 20px;
+	position: relative;
+	text-indent: 0;
+	text-transform: uppercase;
+
+	@include hover($white) {
+		color: $red-light;
+	}
+}
+
+.mobile-menu__list {
+	overflow-y: auto;
+	@include position(absolute, 50px null 0 null);
+	width: 100%;
+}
+
+.mobile-menu__logo {
+	$height: 21px;
+	$width: 70px;
+	display: block;
+	height: $height;
+	@include hide-text;
+	@include position(absolute, 14px null null 20px);
+	@include svg-image($image: "logo", $width: $width, $height: $height);
+	width: $width;
+}
+
+// Active menu
+.mobile-menu {
+	.menu-active & {
+		box-shadow: 4px 0px 10px 0px rgba(0,0,0,0.3);
+		transform: translateX(0);
+	}
+
+	// Fallback styles for browsers that don't like transforms or have js turned off
+	.no-csstransforms &,
+	.no-js & {
+		left: -280px;
+		transform: translateY(0);
+		transition: left 0.3s ease-in-out;
+	}
+
+	.no-csstransforms.menu-active & {
+		left: 0;
+	}
+
+	.no-js & {
+		&:target {
+			left: 0;
+
+			~ .overlay {
+				opacity: 1;
+				transition: opacity 0.3s ease-in-out;
+				visibility: visible;
+			}
+		}
+	}
+}

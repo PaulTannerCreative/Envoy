@@ -1,0 +1,42 @@
+# mac
+*._*
+.DS_Store
+
+# sublime
+*.sublime-*
+
+# windows
+RemoteSystemsTempFiles
+Thumbs.db
+
+node_modules
+Assets
+
+# dumb huge files
+*.psd
+*.tif
+*.tiff
+*.ai
+*.eps
+*.indd
+*.flv
+*.fla
+*.pdf
+*.wav
+*.mp3
+*.mov
+*.mkv
+*.avi
+*.m4v
+*.m4a
+*.aac
+*.zip
+*.tar
+*.gz
+*.bz2
+*.tgz
+*.bz
+*.rar
+*.swp
+*.iso
+*.dmg
