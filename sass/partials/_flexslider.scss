@@ -37,6 +37,10 @@
 	}
 }
 
+.flexslider--loaded {
+	background: $black;
+}
+
 .flex-control-nav {
 	bottom: auto;
 	@include clearfix;

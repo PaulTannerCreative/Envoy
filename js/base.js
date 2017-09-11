@@ -8,7 +8,9 @@ var base = {
 
 		// ----- MANTLE CAROUSELS ----- //
 		$('[data-slider]').each(function() {
-			$(this).flexslider({
+			var slider = $(this);
+
+			slider.flexslider({
 				animation: 'fade',
 				pauseOnHover: true,
 				directionNav: true,
@@ -17,6 +19,13 @@ var base = {
 				start: function(slider) {
 					$(window).trigger('resize');
 				}
+			});
+
+			// Wait for loading transition
+			slider.imagesLoaded(function() {
+				setTimeout(function() {
+					slider.addClass('flexslider--loaded');
+				}, 1500);
 			});
 		});
 
